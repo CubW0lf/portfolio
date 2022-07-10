@@ -1,0 +1,100 @@
+.footer {
+  height: auto;
+  background-color: var(--dark);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 47%);
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vw;
+}
+
+.footer > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.footer > div h2 {
+  font-size: 3vh;
+  margin-bottom: 2vh;
+  font-weight: 300;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.center p svg path {
+  stroke: white !important;
+}
+
+.center p,
+.center a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5vh;
+  width: 100%;
+  font-size: 2vh;
+}
+
+.softSkills ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.softSkills li {
+  font-size: 2vh;
+  margin-right: 1vw;
+  color: var(--grey);
+  opacity: 0.6;
+}
+
+.cloud ul {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, 15vw);
+}
+
+.cloud li {
+  font-size: 1.5vh;
+  color: var(--grey);
+  opacity: 0.8;
+  text-align: left;
+}
+
+@media screen and (min-width: 1200px) {
+  .footer {
+    height: 20vh;
+    background-color: var(--dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw;
+  }
+
+  .footer > div {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  .cloud ul {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, 6vw);
+  }
+}

@@ -1,0 +1,217 @@
+.container {
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logo {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  opacity: 0.4;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.container a {
+  color: var(--white);
+}
+
+.fade {
+  animation: 1s ease-in-out forwards fade;
+}
+
+.fadeDown {
+  animation: 1s ease-in-out forwards fadeDown;
+}
+
+.container ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 80vh;
+}
+
+.container li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* background-color: red; */
+  margin-bottom: 5vh;
+}
+
+.container li span {
+  display: block;
+  text-align: center;
+}
+
+.container li span:nth-child(1):before {
+  content: "";
+  position: absolute;
+  background-color: var(--primary);
+  width: 100%;
+  height: 40%;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  animation: 1s ease-in-out forwards grow;
+}
+
+.container li:nth-child(even) span:nth-child(1):hover:before {
+  right: 0;
+  left: auto;
+}
+
+.container li span:nth-child(1) {
+  font-size: 8vh;
+  font-style: italic;
+  line-height: 1.2;
+  position: relative;
+  z-index: 4;
+}
+
+.container li:nth-child(1).enter,
+.container li:nth-child(3).enter,
+.container li:nth-child(5).enter {
+  animation: 1s ease-in-out forwards enterLeft;
+}
+
+.container li:nth-child(1).leave,
+.container li:nth-child(3).leave,
+.container li:nth-child(5).leave {
+  animation: 1s ease-in-out forwards leaveLeft;
+}
+
+.container li:nth-child(2).enter,
+.container li:nth-child(4).enter,
+.container li:nth-child(6).enter {
+  animation: 1s ease-in-out forwards enterRight;
+}
+
+.container li:nth-child(2).leave,
+.container li:nth-child(4).leave,
+.container li:nth-child(6).leave {
+  animation: 1s ease-in-out forwards leaveRight;
+}
+
+.container li span:nth-child(2) {
+  font-size: 2.5vh;
+  color: var(--primary);
+  line-height: 1;
+  font-family: var(--titleFont);
+}
+
+@media screen and (min-width: 1200px) {
+  .container li span:nth-child(1) {
+    font-size: 4vw;
+    font-style: italic;
+    line-height: 1.2;
+    position: relative;
+    z-index: 4;
+    overflow: hidden;
+  }
+
+  .container li span:nth-child(2) {
+    font-size: 1.5vw;
+    color: var(--primary);
+    line-height: 1;
+    font-family: var(--titleFont);
+  }
+
+  .container li span:nth-child(1):before {
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    width: 100%;
+    height: 40%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    transform: translateX(100%);
+  }
+
+  .container li span:nth-child(1):hover:before {
+    content: "";
+    background-color: var(--primary);
+    transform: translateX(0);
+    transition: all 1s;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes enterLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes leaveLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes enterRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes leaveRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

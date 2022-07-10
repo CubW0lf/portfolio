@@ -1,0 +1,31 @@
+.scrollDown {
+  color: white;
+  font-size: 5vh;
+  position: fixed;
+  bottom: 2vw;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.7;
+  animation: scroll 1s ease-in-out infinite forwards;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10%);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .photo {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+
+  .photo section {
+    scroll-snap-align: center;
+  }
+}
