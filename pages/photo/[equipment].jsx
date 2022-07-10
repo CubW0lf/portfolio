@@ -44,7 +44,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const equipments = await getAll("photo_equipment");
 
-  const paths = equipments.map((item) => ({
+  const paths = equipments.data.map((item) => ({
     params: { equipment: item.id.toString() },
   }));
   return {
