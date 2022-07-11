@@ -21,10 +21,10 @@ export default function Home({ page }) {
     <>
       <div className={styles.home}>
         <Head>
-          <title>Vincent Cottalorda</title>
+          <title>Portfolio Web Developpeur | Vincent Cottalorda</title>
           <meta
             name="description"
-            content="Mon portfolio : Mon travail, mes créations, mes photos, mes vidéos, mes sites etc..."
+            content="Portfolio de Vincent Cottalorda: Sites Web, Photo, Vidéo. Web développeur et créateur polyvalent"
           />
           <link rel="icon" href="/favicon.ico" />
         </Head>

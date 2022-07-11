@@ -60,10 +60,11 @@ const NavModal = () => {
         </li>
       </ul>
 
-      <div className={styles.logo}>
-        <Image src={logo} alt="" layout="responsive" className={menuVisible ? styles.fade : styles.fadedown} />
-      </div>
-      <Dialog.Overlay ref={backdrop} className={styles.backdrop} onClick={() => setMenuVisible(false)}></Dialog.Overlay>
+      <Dialog.Overlay ref={backdrop} className={styles.backdrop} onClick={() => setMenuVisible(false)}>
+        <div className={styles.logo}>
+          <Image src={logo} alt="" layout="responsive" className={menuVisible ? styles.fade : styles.fadedown} />
+        </div>
+      </Dialog.Overlay>
     </Dialog>
   );
 };

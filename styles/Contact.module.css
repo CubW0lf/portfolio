@@ -74,10 +74,10 @@
 
 .inputContainer {
   border: 1px solid var(--grey);
-  border-radius: 20px;
+  border-radius: 10px;
   width: 100%;
   position: relative;
-  margin-top: 1vh;
+  margin-bottom: 3vh;
 }
 
 .label {
@@ -126,6 +126,10 @@
   stroke: white;
 }
 
+.submit {
+  margin-top: 0;
+}
+
 @media screen and (min-width: 1200px) {
   .container {
     padding: 2vw calc(4vw + 5vh);
@@ -159,5 +163,13 @@
 
   .column:nth-child(2) {
     width: 60%;
+  }
+
+  .inputContainer {
+    border: 1px solid var(--grey);
+    border-radius: 20px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 1vh;
   }
 }

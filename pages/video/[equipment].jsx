@@ -14,8 +14,8 @@ const SetupSingle = ({ equipment }) => {
   return (
     <>
       <Head>
-        <title>{`${equipment.name} ${equipment.feature} | Vincent Cottalorda`}</title>
-        <meta name="description" content={`Materiel Photo, présentation du ${equipment.name}`} />
+        <title>{`${equipment.name} ${equipment.feature}| Vincent Cottalorda`}</title>
+        <meta name="description" content={`Materiel Vidéo, présentation du ${equipment.name}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <article className={styles.container}>
@@ -40,7 +40,7 @@ const SetupSingle = ({ equipment }) => {
 
 export async function getStaticProps(context) {
   const id = context.params.equipment;
-  const equipment = await find("photo_equipment", id);
+  const equipment = await find("video_equipment", id);
   return {
     props: {
       equipment,
@@ -50,7 +50,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const equipments = await getAll("photo_equipment");
+  const equipments = await getAll("video_equipment");
 
   const paths = equipments.map((item) => ({
     params: { equipment: item.id.toString() },

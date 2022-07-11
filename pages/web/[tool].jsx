@@ -7,15 +7,15 @@ import { useUxContext } from "../../contexts/uxContext";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-const SetupSingle = ({ equipment }) => {
+const SetupSingle = ({ tool }) => {
   const { redirect } = useUxContext();
 
   const router = useRouter();
   return (
     <>
       <Head>
-        <title>{`${equipment.name} ${equipment.feature} | Vincent Cottalorda`}</title>
-        <meta name="description" content={`Materiel Photo, présentation du ${equipment.name}`} />
+        <title>{`${tool.name} ${tool.feature} | Vincent Cottalorda`}</title>
+        <meta name="description" content={`Technologies Web, présentation de ${tool.name}`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <article className={styles.container}>
@@ -23,37 +23,37 @@ const SetupSingle = ({ equipment }) => {
           <MdOutlineArrowBack />
         </div>
         <header className={styles.header}>
-          <h1>{equipment.name}</h1>
-          <h2>{equipment.feature}</h2>
+          <h1>{tool.name}</h1>
+          <h2>{tool.feature}</h2>
           <div className={styles.fimgContainer}>
             <div className={styles.fimgRelative}>
-              <Image src={getAssetURL(equipment.fimg.id)} alt="" layout="fill" objectFit="contain" />
+              <Image src={getAssetURL(tool.fimg.id)} alt="" layout="fill" objectFit="contain" />
             </div>
           </div>
         </header>
         <hr />
-        <div dangerouslySetInnerHTML={{ __html: equipment.description }} className={styles.body}></div>
+        <div dangerouslySetInnerHTML={{ __html: tool.text }} className={styles.body}></div>
       </article>
     </>
   );
 };
 
 export async function getStaticProps(context) {
-  const id = context.params.equipment;
-  const equipment = await find("photo_equipment", id);
+  const id = context.params.tool;
+  const tool = await find("tool", id);
   return {
     props: {
-      equipment,
+      tool,
     },
     revalidate: 30,
   };
 }
 
 export async function getStaticPaths() {
-  const equipments = await getAll("photo_equipment");
+  const tools = await getAll("tool");
 
-  const paths = equipments.map((item) => ({
-    params: { equipment: item.id.toString() },
+  const paths = tools.map((item) => ({
+    params: { tool: item.id.toString() },
   }));
   return {
     paths,

@@ -7,6 +7,7 @@ import { createItem } from "../directus/utils";
 import Networks from "../components/Networks/Networks";
 import { useUxContext } from "../contexts/uxContext";
 import Flash from "../components/Flash/Flash";
+import Head from "next/head";
 
 const Contact = () => {
   const { flash, flashType, handleFlash } = useUxContext();
@@ -26,6 +27,11 @@ const Contact = () => {
 
   return (
     <>
+      <Head>
+        <title>Contact | Vincent Cottalorda</title>
+        <meta name="description" content="Formulaire de contact, question, devis." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className={styles.container}>
         <h1>Contact</h1>
         <form className={styles.form} onSubmit={handleSubmit(submit)}>
@@ -129,7 +135,7 @@ const Contact = () => {
               {errors.message?.type === "required" && <p className="error">Le message est requis</p>}
             </div>
           </div>
-          <Button text="Envoyer" color="var(--grey)" type="submit" />
+          <Button text="Envoyer" color="var(--grey)" type="submit" className={styles.submit} />
         </form>
         <Networks />
         {flash && <Flash type={flashType} text={flash} />}

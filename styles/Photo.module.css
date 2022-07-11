@@ -17,15 +17,3 @@
     transform: translateY(10%);
   }
 }
-
-@media screen and (min-width: 1200px) {
-  .photo {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-  }
-
-  .photo section {
-    scroll-snap-align: center;
-  }
-}
