@@ -52,6 +52,12 @@ const Shooting = ({ shooting }) => {
     setImages(shooting.photos);
   }, [shooting.photos]);
 
+  const handleRedirect = () => {
+    if (redirect !== null) {
+      router.push(`${redirect}#forestate`);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -71,7 +77,7 @@ const Shooting = ({ shooting }) => {
         <Dialog.Overlay ref={backdrop} className={styles.backdrop} onClick={() => setToggleModal(false)}></Dialog.Overlay>
       </Dialog>
       <article className={styles.container}>
-        <div className={styles.back} onClick={() => router.push(redirect)}>
+        <div className={styles.back} onClick={handleRedirect}>
           <MdOutlineArrowBack />
         </div>
         <header className={styles.header}>

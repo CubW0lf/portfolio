@@ -15,6 +15,10 @@
   height: 100%;
 }
 
+.pointerEvent {
+  pointer-events: none;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -145,7 +149,8 @@
   transform: translate(-50%, -50%);
   width: 80vw;
   height: 80vh;
-  border-radius: 4px;
+  border-radius: 5px;
+  border: 1px solid white;
 }
 
 .backdrop {
@@ -262,27 +267,19 @@
   .prev {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    left: 2vw;
+    left: 0;
     z-index: 3;
-    font-size: 5vw;
-    border-radius: 50%;
-    color: white;
-    padding: 1vw;
-    cursor: pointer;
+    font-size: 4vw;
+    padding: 0;
   }
 
   .next {
-    cursor: pointer;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    right: 2vw;
+    right: 0;
     z-index: 3;
-    font-size: 5vw;
-    color: white;
-    padding: 1vw;
-    border-radius: 50%;
+    font-size: 4vw;
+    padding: 0;
   }
 
   .back {

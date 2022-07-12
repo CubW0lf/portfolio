@@ -16,6 +16,12 @@ const SetupSingle = ({ site }) => {
   const { redirect } = useUxContext();
 
   const router = useRouter();
+
+  const handleRedirect = () => {
+    if (redirect !== null) {
+      router.push(`${redirect}#forestate`);
+    }
+  };
   return (
     <>
       <Head>
@@ -24,7 +30,7 @@ const SetupSingle = ({ site }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <article className={styles.container}>
-        <div className={styles.back} onClick={() => router.push(redirect)}>
+        <div className={styles.back} onClick={handleRedirect}>
           <MdOutlineArrowBack />
         </div>
         <header className={styles.header}>
