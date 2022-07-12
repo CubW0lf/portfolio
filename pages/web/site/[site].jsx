@@ -23,44 +23,46 @@ const SetupSingle = ({ site }) => {
     }
   };
   return (
-    <>
-      <Head>
-        <title>{`${site.name} | Vincent Cottalorda`}</title>
-        <meta name="description" content={`Présentation du site ${site.name}`} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <article className={styles.container}>
-        <div className={styles.back} onClick={handleRedirect}>
-          <MdOutlineArrowBack />
-        </div>
-        <header className={styles.header}>
-          <h1>{site.name}</h1>
-          <h2>{dayjs(site.created_at).format("DD MMMM YYYY")}</h2>
-          <div className={styles.fimgContainer}>
-            <div className={styles.fimgRelative}>
-              <Image src={getAssetURL(site.fimg.id)} alt="" layout="fill" objectFit="contain" />
-            </div>
+    site && (
+      <>
+        <Head>
+          <title>{`${site.name} | Vincent Cottalorda`}</title>
+          <meta name="description" content={`Présentation du site ${site.name}`} />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <article className={styles.container}>
+          <div className={styles.back} onClick={handleRedirect}>
+            <MdOutlineArrowBack />
           </div>
-        </header>
-        <hr />
-        <div className={styles.tags}>
-          {site.techno.map((t, index) => (
-            <span className={styles.tag} key={index}>
-              {t}
-            </span>
-          ))}
-        </div>
-        <div className={styles.buttonGroup}>
-          <a href={site.url} target="_Blank" rel="noreferrer" className={styles.button}>
-            Voir le Site <MdOutlineHttp />
-          </a>
-          <a href={site.github} target="_BLANK" rel="noreferrer" className={styles.button}>
-            Voir Le Github <BsGithub />
-          </a>
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: site.description }} className={styles.body}></div>
-      </article>
-    </>
+          <header className={styles.header}>
+            <h1>{site.name}</h1>
+            <h2>{dayjs(site.created_at).format("DD MMMM YYYY")}</h2>
+            <div className={styles.fimgContainer}>
+              <div className={styles.fimgRelative}>
+                <Image src={getAssetURL(site.fimg.id)} alt="" layout="fill" objectFit="contain" />
+              </div>
+            </div>
+          </header>
+          <hr />
+          <div className={styles.tags}>
+            {site.techno.map((t, index) => (
+              <span className={styles.tag} key={index}>
+                {t}
+              </span>
+            ))}
+          </div>
+          <div className={styles.buttonGroup}>
+            <a href={site.url} target="_Blank" rel="noreferrer" className={styles.button}>
+              Voir le Site <MdOutlineHttp />
+            </a>
+            <a href={site.github} target="_BLANK" rel="noreferrer" className={styles.button}>
+              Voir Le Github <BsGithub />
+            </a>
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: site.description }} className={styles.body}></div>
+        </article>
+      </>
+    )
   );
 };
 

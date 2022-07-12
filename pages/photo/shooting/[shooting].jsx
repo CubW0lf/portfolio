@@ -59,55 +59,57 @@ const Shooting = ({ shooting }) => {
   };
 
   return (
-    <>
-      <Head>
-        <title>{`${shooting.name} | Vincent Cottalorda`}</title>
-        <meta name="description" content={`Présentation du shooting ${shooting.name}`} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Dialog open={toggleModal} onClose={() => setToggleModal(false)} initialFocus={backdrop}>
-        <div className={styles.modal}>
-          <GrClose className={styles.close} onClick={() => setToggleModal(false)} />
-          {currentImage !== 0 && <MdOutlineArrowBackIosNew className={styles.prev} onClick={handlePrev} />}
-          {images && currentImage < images.length - 1 && (
-            <MdOutlineArrowForwardIos className={styles.next} onClick={handleNext} />
-          )}
-          <Image src={getAssetURL(image)} alt="" layout="fill" objectFit="contain" />
-        </div>
-        <Dialog.Overlay ref={backdrop} className={styles.backdrop} onClick={() => setToggleModal(false)}></Dialog.Overlay>
-      </Dialog>
-      <article className={styles.container}>
-        <div className={styles.back} onClick={handleRedirect}>
-          <MdOutlineArrowBack />
-        </div>
-        <header className={styles.header}>
-          <h1>{shooting.name}</h1>
-          <h2>{dayjs(shooting.shooted_at).format("DD MMMM YYYY")}</h2>
-          <div className={styles.fimgContainer}>
-            <div className={styles.fimgRelative}>
-              <Image src={getAssetURL(shooting.fimg.id)} alt="" layout="fill" objectFit="contain" />
-            </div>
+    shooting && (
+      <>
+        <Head>
+          <title>{`${shooting.name} | Vincent Cottalorda`}</title>
+          <meta name="description" content={`Présentation du shooting ${shooting.name}`} />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Dialog open={toggleModal} onClose={() => setToggleModal(false)} initialFocus={backdrop}>
+          <div className={styles.modal}>
+            <GrClose className={styles.close} onClick={() => setToggleModal(false)} />
+            {currentImage !== 0 && <MdOutlineArrowBackIosNew className={styles.prev} onClick={handlePrev} />}
+            {images && currentImage < images.length - 1 && (
+              <MdOutlineArrowForwardIos className={styles.next} onClick={handleNext} />
+            )}
+            <Image src={getAssetURL(image)} alt="" layout="fill" objectFit="contain" />
           </div>
-        </header>
-        <hr />
-        <div className={styles.tags}>
-          {shooting.tags.map((t, index) => (
-            <span className={styles.tag} key={index}>
-              {t}
-            </span>
-          ))}
-        </div>
-        <div className={styles.photoGrid}>
-          {images &&
-            images.map((p, index) => (
-              <div className={styles.photoContainer} onClick={() => handleClick(p.directus_files_id, index)} key={p.id}>
-                <Image src={getAssetURL(p.directus_files_id)} alt="" layout="fill" objectFit="cover" />
+          <Dialog.Overlay ref={backdrop} className={styles.backdrop} onClick={() => setToggleModal(false)}></Dialog.Overlay>
+        </Dialog>
+        <article className={styles.container}>
+          <div className={styles.back} onClick={handleRedirect}>
+            <MdOutlineArrowBack />
+          </div>
+          <header className={styles.header}>
+            <h1>{shooting.name}</h1>
+            <h2>{dayjs(shooting.shooted_at).format("DD MMMM YYYY")}</h2>
+            <div className={styles.fimgContainer}>
+              <div className={styles.fimgRelative}>
+                <Image src={getAssetURL(shooting.fimg.id)} alt="" layout="fill" objectFit="contain" />
               </div>
+            </div>
+          </header>
+          <hr />
+          <div className={styles.tags}>
+            {shooting.tags.map((t, index) => (
+              <span className={styles.tag} key={index}>
+                {t}
+              </span>
             ))}
-        </div>
-        {/* <div dangerouslySetInnerHTML={{ __html: shooting.description }} className={styles.body}></div> */}
-      </article>
-    </>
+          </div>
+          <div className={styles.photoGrid}>
+            {images &&
+              images.map((p, index) => (
+                <div className={styles.photoContainer} onClick={() => handleClick(p.directus_files_id, index)} key={p.id}>
+                  <Image src={getAssetURL(p.directus_files_id)} alt="" layout="fill" objectFit="cover" />
+                </div>
+              ))}
+          </div>
+          {/* <div dangerouslySetInnerHTML={{ __html: shooting.description }} className={styles.body}></div> */}
+        </article>
+      </>
+    )
   );
 };
 

@@ -12,29 +12,31 @@ const SetupSingle = ({ equipment }) => {
 
   const router = useRouter();
   return (
-    <>
-      <Head>
-        <title>{`${equipment.name} ${equipment.feature} | Vincent Cottalorda`}</title>
-        <meta name="description" content={`Materiel Photo, présentation du ${equipment.name}`} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <article className={styles.container}>
-        <div className={styles.back} onClick={() => router.push(redirect)}>
-          <MdOutlineArrowBack />
-        </div>
-        <header className={styles.header}>
-          <h1>{equipment.name}</h1>
-          <h2>{equipment.feature}</h2>
-          <div className={styles.fimgContainer}>
-            <div className={styles.fimgRelative}>
-              <Image src={getAssetURL(equipment.fimg.id)} alt="" layout="fill" objectFit="contain" />
-            </div>
+    equipment && (
+      <>
+        <Head>
+          <title>{`${equipment.name} ${equipment.feature} | Vincent Cottalorda`}</title>
+          <meta name="description" content={`Materiel Photo, présentation du ${equipment.name}`} />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <article className={styles.container}>
+          <div className={styles.back} onClick={() => router.push(redirect)}>
+            <MdOutlineArrowBack />
           </div>
-        </header>
-        <hr />
-        <div dangerouslySetInnerHTML={{ __html: equipment.description }} className={styles.body}></div>
-      </article>
-    </>
+          <header className={styles.header}>
+            <h1>{equipment.name}</h1>
+            <h2>{equipment.feature}</h2>
+            <div className={styles.fimgContainer}>
+              <div className={styles.fimgRelative}>
+                <Image src={getAssetURL(equipment.fimg.id)} alt="" layout="fill" objectFit="contain" />
+              </div>
+            </div>
+          </header>
+          <hr />
+          <div dangerouslySetInnerHTML={{ __html: equipment.description }} className={styles.body}></div>
+        </article>
+      </>
+    )
   );
 };
 

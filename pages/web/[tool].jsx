@@ -12,29 +12,31 @@ const SetupSingle = ({ tool }) => {
 
   const router = useRouter();
   return (
-    <>
-      <Head>
-        <title>{`${tool.name} ${tool.feature} | Vincent Cottalorda`}</title>
-        <meta name="description" content={`Technologies Web, présentation de ${tool.name}`} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <article className={styles.container}>
-        <div className={styles.back} onClick={() => router.push(redirect)}>
-          <MdOutlineArrowBack />
-        </div>
-        <header className={styles.header}>
-          <h1>{tool.name}</h1>
-          <h2>{tool.feature}</h2>
-          <div className={styles.fimgContainer}>
-            <div className={styles.fimgRelative}>
-              <Image src={getAssetURL(tool.fimg.id)} alt="" layout="fill" objectFit="contain" />
-            </div>
+    tool && (
+      <>
+        <Head>
+          <title>{`${tool.name} ${tool.feature} | Vincent Cottalorda`}</title>
+          <meta name="description" content={`Technologies Web, présentation de ${tool.name}`} />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <article className={styles.container}>
+          <div className={styles.back} onClick={() => router.push(redirect)}>
+            <MdOutlineArrowBack />
           </div>
-        </header>
-        <hr />
-        <div dangerouslySetInnerHTML={{ __html: tool.text }} className={styles.body}></div>
-      </article>
-    </>
+          <header className={styles.header}>
+            <h1>{tool.name}</h1>
+            <h2>{tool.feature}</h2>
+            <div className={styles.fimgContainer}>
+              <div className={styles.fimgRelative}>
+                <Image src={getAssetURL(tool.fimg.id)} alt="" layout="fill" objectFit="contain" />
+              </div>
+            </div>
+          </header>
+          <hr />
+          <div dangerouslySetInnerHTML={{ __html: tool.text }} className={styles.body}></div>
+        </article>
+      </>
+    )
   );
 };
 
