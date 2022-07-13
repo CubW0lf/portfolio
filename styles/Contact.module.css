@@ -76,6 +76,7 @@
   border: 1px solid var(--grey);
   border-radius: 10px;
   width: 100%;
+  padding: 1vw;
   position: relative;
   margin-bottom: 3vh;
 }
@@ -92,6 +93,8 @@
 
 .textarea {
   height: 25vh;
+  line-height: 130%;
+  color: var(--text);
 }
 
 .mark {
@@ -171,5 +174,6 @@
     width: 100%;
     position: relative;
     margin-bottom: 1vh;
+    padding: 0;
   }
 }

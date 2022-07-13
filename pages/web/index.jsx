@@ -39,6 +39,7 @@ export async function getStaticProps() {
       services,
       tools,
     },
+    revalidate: 30,
   };
 }
 

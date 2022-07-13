@@ -80,7 +80,6 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const clips = await getAll("video_project");
-  console.log(clips);
   const paths = clips.map((item) => ({
     params: { clip: item.id.toString() },
   }));
