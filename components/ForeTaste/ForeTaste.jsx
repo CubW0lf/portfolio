@@ -26,11 +26,11 @@ const WebProjects = ({ projects }) => {
                 <a>
                   <div className={styles.fimgWrapper}>
                     <div className={styles.fimgContainer}>
-                      <Image src={getAssetURL(p.fimg.id)} layout="fill" alt="" objectFit="contain" className={styles.fimg} />
+                      <Image src={getAssetURL(p.fimg.id)} layout="fill" alt="" objectFit="cover" className={styles.fimg} />
                     </div>
                   </div>
 
-                  <h2>{p.name}</h2>
+                  <h2>{p.name.length > 12 ? `${p.name.slice(0, 12)} ...` : p.name}</h2>
                   <div className={styles.logoWrapper}>
                     <div className={styles.logoContainer}>
                       <Image src={logo} layout="fill" alt="" objectFit="contain" className={styles.logo} />
