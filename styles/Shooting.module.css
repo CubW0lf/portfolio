@@ -130,12 +130,6 @@
   margin-bottom: 1vh;
 }
 
-.photoContainer:hover {
-  transform: scale(1.2);
-  z-index: 5;
-  transition: all 0.4s;
-}
-
 .modal {
   position: fixed;
   z-index: 2;
@@ -257,10 +251,14 @@
   }
 
   .photoContainer {
-    position: relative;
     height: 200px;
     width: auto;
-    cursor: pointer;
+    transition: all 0.4s;
+  }
+
+  .photoContainer:hover {
+    transform: scale(1.2);
+    z-index: 5;
     transition: all 0.4s;
   }
 

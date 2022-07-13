@@ -5,8 +5,16 @@ import styles from "../../styles/Photo.module.css";
 import Setup from "../../components/Setup/Setup";
 import ForeTaste from "../../components/ForeTaste/ForeTaste";
 import Head from "next/head";
+import { useUxContext } from "../../contexts/uxContext";
+import { useEffect } from "react";
 
 const Photo = ({ text, clip, services, equipments }) => {
+  const { setCurrentCategory } = useUxContext();
+
+  useEffect(() => {
+    setCurrentCategory("video");
+  }, [setCurrentCategory]);
+
   return (
     <>
       <Head>

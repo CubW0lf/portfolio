@@ -11,15 +11,9 @@ import "dayjs/locale/fr";
 
 const Clip = ({ clip }) => {
   dayjs.locale("fr");
-  const { redirect } = useUxContext();
+  const { handleRedirect } = useUxContext();
 
   const router = useRouter();
-
-  const handleRedirect = () => {
-    if (redirect !== null) {
-      router.push(`${redirect}#forestate`);
-    }
-  };
 
   if (router.isFallback) {
     return <div>Chargement de la Page ...</div>;

@@ -4,7 +4,6 @@ import Image from "next/image";
 import getAssetURL from "../../../directus/getAssets";
 import { MdOutlineArrowBack, MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
 import { useUxContext } from "../../../contexts/uxContext";
-import { useRouter } from "next/router";
 import Head from "next/head";
 import { Dialog } from "@headlessui/react";
 import { useEffect, useRef, useState } from "react";
@@ -14,19 +13,13 @@ import "dayjs/locale/fr";
 
 const Shooting = ({ shooting }) => {
   dayjs.locale("fr");
-  const { redirect } = useUxContext();
+  const { handleRedirect } = useUxContext();
 
   const [toggleModal, setToggleModal] = useState(false);
   const [images, setImages] = useState(null);
   const [image, setImage] = useState("");
   const [currentImage, setCurrentImage] = useState(0);
   const backdrop = useRef();
-
-  const router = useRouter();
-
-  // if (router.isFallback) {
-  //   return <div>Chargement de la Page ...</div>;
-  // }
 
   useEffect(() => {
     if (images !== null) {
@@ -53,12 +46,6 @@ const Shooting = ({ shooting }) => {
   const handleNext = () => {
     if (currentImage < images.length - 1) {
       setCurrentImage(currentImage + 1);
-    }
-  };
-
-  const handleRedirect = () => {
-    if (redirect !== null) {
-      router.push(`${redirect}#forestate`);
     }
   };
 

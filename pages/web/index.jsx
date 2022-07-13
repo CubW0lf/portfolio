@@ -5,8 +5,15 @@ import Services from "../../components/Services/Services";
 import Setup from "../../components/Setup/Setup";
 import Overview from "../../components/Overview/Overview";
 import Head from "next/head";
+import { useUxContext } from "../../contexts/uxContext";
+import { useEffect } from "react";
 
 const Web = ({ text, projects, services, tools }) => {
+  const { setCurrentCategory } = useUxContext();
+
+  useEffect(() => {
+    setCurrentCategory("photo");
+  }, [setCurrentCategory]);
   return (
     <>
       <Head>
