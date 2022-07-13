@@ -17,15 +17,16 @@ const SetupSingle = ({ site }) => {
 
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <div>Chargement de la Page ...</div>;
-  }
-
   const handleRedirect = () => {
     if (redirect !== null) {
       router.push(`${redirect}#forestate`);
     }
   };
+
+  if (router.isFallback) {
+    return <div>Chargement de la Page ...</div>;
+  }
+
   return (
     site && (
       <>
@@ -70,17 +71,6 @@ const SetupSingle = ({ site }) => {
   );
 };
 
-export async function getStaticProps(context) {
-  const id = context.params.site;
-  const site = await find("web_project", id);
-  return {
-    props: {
-      site,
-    },
-    revalidate: 30,
-  };
-}
-
 export async function getStaticPaths() {
   const sites = await getAll("web_project");
 
@@ -89,7 +79,18 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: "blocking",
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context) {
+  const id = context.params.site;
+  const site = await find("web_project", id);
+  return {
+    props: {
+      site,
+    },
+    revalidate: 30,
   };
 }
 
