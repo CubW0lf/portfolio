@@ -24,11 +24,19 @@ const Shooting = ({ shooting }) => {
 
   const router = useRouter();
 
+  // if (router.isFallback) {
+  //   return <div>Chargement de la Page ...</div>;
+  // }
+
   useEffect(() => {
     if (images !== null) {
       setImage(images[currentImage].directus_files_id);
     }
   }, [currentImage, images]);
+
+  useEffect(() => {
+    setImages(shooting.photos);
+  }, [shooting.photos]);
 
   const handleClick = (image, id) => {
     setImage(image);
@@ -47,10 +55,6 @@ const Shooting = ({ shooting }) => {
       setCurrentImage(currentImage + 1);
     }
   };
-
-  useEffect(() => {
-    setImages(shooting.photos);
-  }, [shooting.photos]);
 
   const handleRedirect = () => {
     if (redirect !== null) {
@@ -113,17 +117,6 @@ const Shooting = ({ shooting }) => {
   );
 };
 
-export async function getStaticProps(context) {
-  const id = context.params.shooting;
-  const shooting = await find("shooting", id);
-  return {
-    props: {
-      shooting,
-    },
-    revalidate: 30,
-  };
-}
-
 export async function getStaticPaths() {
   const shootings = await getAll("shooting");
 
@@ -132,7 +125,18 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context) {
+  const id = context.params.shooting;
+  const shooting = await find("shooting", id);
+  return {
+    props: {
+      shooting,
+    },
+    revalidate: 30,
   };
 }
 

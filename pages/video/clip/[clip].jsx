@@ -21,6 +21,10 @@ const Clip = ({ clip }) => {
     }
   };
 
+  if (router.isFallback) {
+    return <div>Chargement de la Page ...</div>;
+  }
+
   return (
     clip && (
       <>
@@ -67,6 +71,17 @@ const Clip = ({ clip }) => {
   );
 };
 
+export async function getStaticPaths() {
+  const clips = await getAll("video_project");
+  const paths = clips.map((item) => ({
+    params: { clip: item.id.toString() },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
 export async function getStaticProps(context) {
   const id = context.params.clip;
   const clip = await find("video_project", id);
@@ -75,17 +90,6 @@ export async function getStaticProps(context) {
       clip,
     },
     revalidate: 30,
-  };
-}
-
-export async function getStaticPaths() {
-  const clips = await getAll("video_project");
-  const paths = clips.map((item) => ({
-    params: { clip: item.id.toString() },
-  }));
-  return {
-    paths,
-    fallback: false,
   };
 }
 
