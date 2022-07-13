@@ -17,6 +17,10 @@ const SetupSingle = ({ site }) => {
 
   const router = useRouter();
 
+  if (router.isFallback) {
+    return <div>Chargement de la Page ...</div>;
+  }
+
   const handleRedirect = () => {
     if (redirect !== null) {
       router.push(`${redirect}#forestate`);
@@ -85,7 +89,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
