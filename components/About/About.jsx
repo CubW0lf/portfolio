@@ -8,7 +8,7 @@ const About = ({ page }) => {
     <section className={styles.container} id="about">
       <div className={styles.bio}>
         <a href="https://youtu.be/bFyAM9MRk64" target="_blank" rel="noreferrer" className={styles.title}>
-          <h1 className="yellow-text">{page && page.name}</h1>
+          <h1 className="yellowText">{page && page.name}</h1>
           <span>
             {page && page.subtitle}
             <div className={styles.correction}>

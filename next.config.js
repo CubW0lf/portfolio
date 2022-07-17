@@ -1,14 +1,14 @@
-// const nextConfig = {
-//   reactStrictMode: true,
-//   images: {
-//     domains: ["api.vincentcottalorda.me"],
-//   },
-//   publicRuntimeConfig: {
-//     url: process.env.DIRECTUS_URL,
-//   },
-// };
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ["api.vincentcottalorda.me"],
+  },
+  publicRuntimeConfig: {
+    url: process.env.DIRECTUS_URL,
+  },
+};
 
-// module.exports = nextConfig;
+module.exports = nextConfig;
 
 const withPWA = require("next-pwa");
 
