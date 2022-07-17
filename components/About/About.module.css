@@ -84,6 +84,7 @@
     top: -100%;
     left: 22vw;
     right: auto;
+    display: block;
   }
 
   .title {
@@ -104,6 +105,7 @@
     height: 2px;
     width: 100%;
   }
+
   .title h2 {
     color: var(--third);
     font-family: var(--font);
@@ -115,10 +117,6 @@
   .bio {
     width: 55%;
     padding: calc(4vw + 5vh);
-  }
-
-  .correction {
-    display: block;
   }
 
   .bio h1 {

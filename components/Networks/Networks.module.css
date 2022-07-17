@@ -22,7 +22,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(0 0 0 / 50%));
 }
 
 @media screen and (min-width: 1200px) {
@@ -48,6 +48,6 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+    filter: brightness(0) invert(1) drop-shadow(0 0 2px rgba(0 0 0 / 50%));
   }
 }

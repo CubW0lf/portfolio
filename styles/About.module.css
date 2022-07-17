@@ -93,6 +93,7 @@
     height: 2px;
     width: 100%;
   }
+
   .title h2 {
     color: var(--third);
     font-family: var(--font);

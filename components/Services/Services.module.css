@@ -23,58 +23,6 @@
   margin-top: 5vh;
 }
 
-.service {
-  width: 20vw;
-  height: auto;
-  padding: 1vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  border-radius: 4px;
-  margin: 0 1vw;
-}
-
-.service h2 {
-  font-size: 4vw;
-  text-align: center;
-  color: var(--dark);
-  font-family: var(--alternativefont);
-  font-weight: 300;
-  z-index: 3;
-}
-
-.fimgWrapper {
-  height: 20vw;
-  width: 20vw;
-  position: relative;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  z-index: 2;
-}
-
-.logoWrapper {
-  width: 80%;
-  height: 80%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-}
-
-.logoContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.logo {
-  opacity: 0.4;
-}
-
 .buttonGroup {
   display: flex;
   flex-direction: column-reverse;
@@ -104,20 +52,7 @@
     margin-top: 0;
   }
 
-  .service {
-    width: 20vw;
-    height: 20vw;
-    padding: 1vw;
-  }
 
-  .fimgWrapper {
-    height: 15vw;
-    width: 15vw;
-  }
-
-  .service h2 {
-    font-size: 3vh;
-  }
 
   .buttonGroup {
     flex-direction: row;

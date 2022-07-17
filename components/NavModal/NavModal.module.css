@@ -40,7 +40,7 @@
 }
 
 .fadeDown {
-  animation: 1s ease-in-out forwards fadeDown;
+  animation: 1s ease-in-out forwards fade-down;
 }
 
 .container ul {
@@ -58,7 +58,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  /* background-color: red; */
   margin-bottom: 5vh;
 }
 
@@ -67,7 +66,7 @@
   text-align: center;
 }
 
-.container li span:nth-child(1):before {
+.container li span:nth-child(1)::before {
   content: "";
   position: absolute;
   background-color: var(--primary);
@@ -79,7 +78,7 @@
   animation: 1s ease-in-out forwards grow;
 }
 
-.container li:nth-child(even) span:nth-child(1):hover:before {
+.container li:nth-child(even) span:nth-child(1):hover::before {
   right: 0;
   left: auto;
 }
@@ -95,25 +94,25 @@
 .container li:nth-child(1).enter,
 .container li:nth-child(3).enter,
 .container li:nth-child(5).enter {
-  animation: 1s ease-in-out forwards enterLeft;
+  animation: 1s ease-in-out forwards enter-left;
 }
 
 .container li:nth-child(1).leave,
 .container li:nth-child(3).leave,
 .container li:nth-child(5).leave {
-  animation: 1s ease-in-out forwards leaveLeft;
+  animation: 1s ease-in-out forwards leave-left;
 }
 
 .container li:nth-child(2).enter,
 .container li:nth-child(4).enter,
 .container li:nth-child(6).enter {
-  animation: 1s ease-in-out forwards enterRight;
+  animation: 1s ease-in-out forwards enter-right;
 }
 
 .container li:nth-child(2).leave,
 .container li:nth-child(4).leave,
 .container li:nth-child(6).leave {
-  animation: 1s ease-in-out forwards leaveRight;
+  animation: 1s ease-in-out forwards leave-right;
 }
 
 .container li span:nth-child(2) {
@@ -141,7 +140,7 @@
     font-family: var(--titleFont);
   }
 
-  .container li span:nth-child(1):before {
+  .container li span:nth-child(1)::before {
     content: "";
     position: absolute;
     background-color: transparent;
@@ -150,11 +149,10 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-
     transform: translateX(100%);
   }
 
-  .container li span:nth-child(1):hover:before {
+  .container li span:nth-child(1):hover::before {
     content: "";
     background-color: var(--primary);
     transform: translateX(0);
@@ -166,53 +164,59 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
-@keyframes fadeDown {
+@keyframes fade-down {
   from {
     opacity: 1;
     visibility: visible;
   }
+
   to {
     opacity: 0;
     visibility: hidden;
   }
 }
 
-@keyframes enterLeft {
+@keyframes enter-left {
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
 }
 
-@keyframes leaveLeft {
+@keyframes leave-left {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-100%);
   }
 }
 
-@keyframes enterRight {
+@keyframes enter-right {
   from {
     transform: translateX(100%);
   }
+
   to {
     transform: translateX(0);
   }
 }
 
-@keyframes leaveRight {
+@keyframes leave-right {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(100%);
   }

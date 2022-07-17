@@ -29,7 +29,7 @@ const Photo = ({ text, clip, services, equipments }) => {
         {text && <Overview text={text} title="Un septième art exigent" category="Vidéo" bg="#000" go="Materiel" />}
         {equipments && <Setup setup={equipments} title="Materiel" go="Prestations" />}
         {services && <Services services={services} go="Les Clips" />}
-        {clip && <ForeTaste projects={clip} />}
+        {clip && <ForeTaste projects={clip} title="Les Clips" />}
       </div>
     </>
   );

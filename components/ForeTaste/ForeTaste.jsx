@@ -6,13 +6,13 @@ import Link from "next/link";
 import { useUxContext } from "../../contexts/uxContext";
 import { useRouter } from "next/router";
 
-const WebProjects = ({ projects }) => {
+const WebProjects = ({ projects, title }) => {
   const { setRedirect } = useUxContext();
 
   const router = useRouter();
   return (
     <section className={styles.container} id="forestate">
-      <h1>Des exemples ?</h1>
+      <h1>{title}</h1>
       <div className={styles.grid}>
         {projects &&
           projects.map((p) => (

@@ -1,10 +1,11 @@
 import { MdError, MdDone } from "react-icons/md";
+import styles from "./Flash.module.css";
 
 const Flash = ({ type, text }) => {
   return (
-    <div className={`Flash ${type}`}>
-      {type === "error" && <MdError className="success" />}
-      {type === "success" && <MdDone className="success" />}
+    <div className={`${styles.container} ${type}`}>
+      {type === "error" && <MdError className={styles.error} />}
+      {type === "success" && <MdDone className={styles.success} />}
       <p>{text}</p>
     </div>
   );

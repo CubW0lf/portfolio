@@ -1,12 +1,13 @@
 .container {
   padding: calc(4vw + 5vh) 5vw;
-  background-color: var(--third);
+  background-color: var(--dark);
   height: 100vh;
   overflow-y: scroll;
 }
 
 .fimgContainer {
   display: none;
+  z-index: 2;
 }
 
 .fimgRelative {
@@ -28,14 +29,22 @@
 }
 
 .header h1 {
-  font-size: 15vw;
-  color: var(--dark);
+  font-size: 7vw;
+  color: var(--white);
 }
 
 .header h2 {
   font-size: 5vw;
   font-weight: 300;
-  color: white;
+  color: var(--white);
+  opacity: .5;
+}
+
+.container hr {
+  border-color: var(--white);
+  opacity: .5;
+  position: relative;
+  z-index: 0;
 }
 
 .body {
@@ -43,7 +52,7 @@
 }
 
 .body p {
-  color: var(--dark);
+  color: var(--white);
   font-weight: 500;
 }
 
@@ -55,11 +64,11 @@
 
 .back {
   position: absolute;
-  left: 2vw;
+  left: 5vw;
   top: 2vw;
-  font-size: 10vw;
-  color: white;
-  background-color: var(--dark);
+  font-size: 5vw;
+  color: var(--dark);
+  background-color: var(--white);
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
@@ -72,46 +81,13 @@
 }
 
 .tag {
-  background-color: var(--dark);
-  color: white;
-  padding: 5px 15px;
-  font-family: var(--montserrat);
-  font-size: 4vw;
-  margin-right: 0.5vw;
-  border-radius: 10px;
-}
-
-.buttonGroup {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 3vh;
-}
-
-.button {
-  border-color: var(--dark);
-  color: white;
   background-color: var(--primary);
-  font-size: 1vw;
-  padding: 0.5vw 1vw;
+  color: var(--white);
+  padding: 3px 7px;
+  font-family: var(--montserrat);
+  font-size: 2.5vw;
+  margin-right: 0.5vw;
   border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.button:nth-child(1) {
-  margin-right: 1vw;
-}
-
-.button svg {
-  font-size: 2vw;
-  margin-left: 1vw;
-}
-
-.button:hover {
-  color: var(--dark);
-  background-color: white;
 }
 
 .photoGrid {
@@ -150,7 +126,7 @@
 .backdrop {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgb(0 0 0 / 90%);
   position: fixed;
   z-index: 1;
   top: 0;
@@ -206,7 +182,6 @@
 @media screen and (min-width: 1200px) {
   .container {
     padding: 2vw calc(4vw + 5vh);
-    background-color: var(--third);
     height: 100vh;
     overflow-y: scroll;
   }
@@ -222,19 +197,18 @@
   }
 
   .header h1 {
-    font-size: 5vw;
-    color: var(--dark);
+    font-size: 3vw;
+    font-weight: 500;
+    line-height: 1.2;
+    font-family: var(--montserrat);
   }
 
   .header h2 {
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: 300;
-    color: white;
   }
 
   .tag {
-    background-color: var(--dark);
-    color: white;
     padding: 5px 15px;
     font-family: var(--montserrat);
     font-size: 1vw;
@@ -243,7 +217,7 @@
   }
 
   .photoGrid {
-    margin-top: 5vh;
+    margin-top: 6vh;
     display: grid;
     gap: 10px;
     justify-content: flex-start;
@@ -261,6 +235,10 @@
     z-index: 5;
     transition: all 0.4s;
   }
+
+  /* .photoContainer:hover img {
+    object-fit: contain !important;
+  } */
 
   .prev {
     position: absolute;
@@ -285,8 +263,6 @@
     left: 2vw;
     top: calc(5.5vw + 5vh);
     font-size: 2.5vw;
-    color: white;
-    background-color: var(--dark);
     border-radius: 50%;
     cursor: pointer;
     z-index: 10;

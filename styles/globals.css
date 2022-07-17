@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+
 /*
 1. Variables
 2. RESET
@@ -13,7 +14,7 @@
 
 :root {
   --white: #fdf7fa;
-  --dark: #3b3b3b;
+  --dark: #262626;
   --body: #e1d7cc;
   --primary: #c68d1f;
   --secondary: #7b5846;
@@ -84,10 +85,12 @@ h6 {
 
 a {
   text-decoration: none;
+  color: var(--primary);
 }
 
 li {
   list-style: none;
+  color: var(--white);
 }
 
 #root,
@@ -103,10 +106,6 @@ section {
 
 /* 4 inline */
 
-a {
-  color: var(--primary);
-}
-
 p {
   font-size: 1.3rem;
   font-family: var(--font);
@@ -117,9 +116,8 @@ p {
 }
 
 hr {
-  border: 0 solid rgba(0, 0, 0, 0);
+  border: 0 solid black;
   border-top: 2px solid var(--white);
-  outline: none;
   width: 100%;
   margin-top: 1vh;
   margin-bottom: 1vh;
@@ -146,10 +144,6 @@ h3 {
   font-size: 1.5rem;
 }
 
-li {
-  color: var(--white);
-}
-
 button {
   border-radius: 0.25rem;
   font-size: 5vw;
@@ -174,13 +168,12 @@ textarea {
   padding: 2vw;
   background-color: transparent;
   width: 100%;
-  font-size: 3vh;
   color: var(--dark);
-  width: 100%;
   font-size: 2vh;
   outline-color: var(--primary);
   border-radius: 15px;
 }
+
 select {
   color: var(--grey);
 }
@@ -226,7 +219,7 @@ input:-internal-autofill-selected {
 
 /* 6 Classes */
 
-.dark-text p {
+.darkText p {
   color: var(--dark);
 }
 
@@ -255,63 +248,15 @@ input:-internal-autofill-selected {
   font-weight: 500;
 }
 
-.Flash {
-  position: absolute;
-  width: 90%;
-  border-radius: 5px;
-  height: 15vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  z-index: 10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.Flash svg {
-  font-size: 8vh;
-  position: absolute;
-  left: 0;
-  transform: translateX(-50%);
-}
-
-.Flash p {
-  color: white;
-  font-size: 4vh;
-  font-family: var(--linkFont);
-  font-weight: 500;
-}
-
-.Flash.error {
-  background-color: var(--error);
-}
-
-.Flash.error svg {
-  color: white;
-  filter: drop-shadow(0 0 5px var(--error));
-}
-
-.Flash.success {
-  background-color: var(--success);
-}
-
-.Flash.success svg {
-  color: white;
-  background-color: var(--success);
-  filter: drop-shadow(0 0 5px white);
-  border-radius: 50%;
-}
-
 .mobile {
   display: flex !important;
 }
 
-.not-mobile {
+.notMobile {
   display: none !important;
 }
 
-.yellow-text {
+.yellowText {
   color: var(--primary);
 }
 
@@ -328,7 +273,7 @@ input:-internal-autofill-selected {
     display: none !important;
   }
 
-  .not-mobile {
+  .notMobile {
     display: flex !important;
   }
 
@@ -370,9 +315,7 @@ input:-internal-autofill-selected {
     padding: 1vw;
     background-color: transparent;
     width: 100%;
-    font-size: 3vh;
     color: var(--dark);
-    width: 100%;
     font-size: 2vh;
     outline-color: var(--primary);
     border-radius: 15px;

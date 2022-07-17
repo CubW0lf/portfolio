@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 2000",
-    "lint": "next lint"
+    "lint": "next lint",
+    "css": "npx stylelint '**/*.css'"
   },
   "dependencies": {
     "@directus/sdk": "^9.13.0",
     "@headlessui/react": "^1.6.5",
     "dayjs": "^1.11.3",
     "next": "12.2.0",
+    "next-pwa": "^5.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.33.1",
@@ -22,6 +24,9 @@
   },
   "devDependencies": {
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.0"
+    "eslint-config-next": "12.2.0",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^26.0.0"
   }
 }

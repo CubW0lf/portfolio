@@ -28,7 +28,7 @@ const Web = ({ text, projects, services, tools }) => {
         {text && <Overview text={text} category="Web" title="Communiquer avec la technologie" bg="#8b8784" />}
         {tools && <Setup setup={tools} title="Technologies" go="Prestations" />}
         {services && <Services services={services} go="des exemples de site" />}
-        {projects && <ForeTaste projects={projects} />}
+        {projects && <ForeTaste projects={projects} title="Web Sites" />}
       </div>
     </>
   );

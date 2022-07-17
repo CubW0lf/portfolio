@@ -15,7 +15,7 @@ const NavModal = () => {
     <Dialog open={menuVisible} onClose={() => setMenuVisible(false)} initialFocus={backdrop}>
       <ul className={styles.container}>
         <li className={menuVisible ? styles.enter : styles.leave} onClick={() => setMenuVisible(false)}>
-          <Link href="/">
+          <Link href="/" tabIndex="-1">
             <a>
               <span>Accueil</span>
             </a>

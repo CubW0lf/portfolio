@@ -77,7 +77,7 @@ const Shooting = ({ shooting }) => {
             <h2>{dayjs(shooting.shooted_at).format("DD MMMM YYYY")}</h2>
             <div className={styles.fimgContainer}>
               <div className={styles.fimgRelative}>
-                <Image src={getAssetURL(shooting.fimg.id)} alt="" layout="fill" objectFit="contain" />
+                <Image src={getAssetURL(shooting.fimg.id)} alt="" layout="fill" objectFit="contain" objectPosition="right" />
               </div>
             </div>
           </header>
