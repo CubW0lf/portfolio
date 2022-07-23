@@ -11,6 +11,29 @@ import { BsGithub } from "react-icons/bs";
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
 
+export async function getStaticPaths() {
+  const sites = await getAll("web_project");
+
+  const paths = sites.map((item) => ({
+    params: { site: item.id.toString() },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context) {
+  const id = context.params.site;
+  const site = await find("web_project", id);
+  return {
+    props: {
+      site,
+    },
+    revalidate: 30,
+  };
+}
+
 const SetupSingle = ({ site }) => {
   dayjs.locale("fr");
   const { handleRedirect } = useUxContext();
@@ -64,28 +87,5 @@ const SetupSingle = ({ site }) => {
     )
   );
 };
-
-export async function getStaticPaths() {
-  const sites = await getAll("web_project");
-
-  const paths = sites.map((item) => ({
-    params: { site: item.id.toString() },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
-}
-
-export async function getStaticProps(context) {
-  const id = context.params.site;
-  const site = await find("web_project", id);
-  return {
-    props: {
-      site,
-    },
-    revalidate: 30,
-  };
-}
 
 export default SetupSingle;

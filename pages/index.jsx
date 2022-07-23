@@ -15,6 +15,15 @@ import { useRouter } from "next/router";
 import { GoTriangleDown } from "react-icons/go";
 import Networks from "../components/Networks/Networks";
 
+export async function getStaticProps() {
+  const page = await find("page", 1);
+  return {
+    props: {
+      page: page,
+    },
+  };
+}
+
 export default function Home({ page }) {
   const router = useRouter();
   return (
@@ -90,13 +99,4 @@ export default function Home({ page }) {
       <Footer />
     </>
   );
-}
-
-export async function getStaticProps() {
-  const page = await find("page", 1);
-  return {
-    props: {
-      page: page,
-    },
-  };
 }

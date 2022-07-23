@@ -8,6 +8,22 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { useUxContext } from "../../contexts/uxContext";
 
+export async function getStaticProps() {
+  const text = await find("photo", 1);
+  const shooting = await getAll("shooting");
+  const services = await getAll("photo_service");
+  const equipments = await getAll("photo_equipment");
+  return {
+    props: {
+      text,
+      equipments,
+      services,
+      shooting,
+    },
+    revalidate: 30,
+  };
+}
+
 const Photo = ({ text, shooting, services, equipments }) => {
   const { setCurrentCategory } = useUxContext();
 
@@ -34,21 +50,5 @@ const Photo = ({ text, shooting, services, equipments }) => {
     </>
   );
 };
-
-export async function getStaticProps() {
-  const text = await find("photo", 1);
-  const shooting = await getAll("shooting");
-  const services = await getAll("photo_service");
-  const equipments = await getAll("photo_equipment");
-  return {
-    props: {
-      text,
-      equipments,
-      services,
-      shooting,
-    },
-    revalidate: 30,
-  };
-}
 
 export default Photo;

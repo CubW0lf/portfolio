@@ -8,6 +8,22 @@ import Head from "next/head";
 import { useUxContext } from "../../contexts/uxContext";
 import { useEffect } from "react";
 
+export async function getStaticProps() {
+  const text = await find("web", 1);
+  const projects = await getAll("web_project");
+  const services = await getAll("web_service");
+  const tools = await getAll("tool");
+  return {
+    props: {
+      text,
+      projects,
+      services,
+      tools,
+    },
+    revalidate: 30,
+  };
+}
+
 const Web = ({ text, projects, services, tools }) => {
   const { setCurrentCategory } = useUxContext();
 
@@ -33,21 +49,5 @@ const Web = ({ text, projects, services, tools }) => {
     </>
   );
 };
-
-export async function getStaticProps() {
-  const text = await find("web", 1);
-  const projects = await getAll("web_project");
-  const services = await getAll("web_service");
-  const tools = await getAll("tool");
-  return {
-    props: {
-      text,
-      projects,
-      services,
-      tools,
-    },
-    revalidate: 30,
-  };
-}
 
 export default Web;

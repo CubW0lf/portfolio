@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 class MyDocument extends Document {
   render() {
@@ -18,6 +19,16 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <Script id="axeptio">
+            {typeof window !== "undefined" &&
+              (window.axeptioSettings = { clientId: "62d7490ddc243bf3df454ef5" }(function (d, s) {
+                var t = d.getElementsByTagName(s)[0],
+                  e = d.createElement(s);
+                e.async = true;
+                e.src = "//static.axept.io/sdk-slim.js";
+                t.parentNode.insertBefore(e, t);
+              })(document, "script"))}
+          </Script>
         </body>
       </Html>
     );

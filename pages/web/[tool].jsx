@@ -7,6 +7,29 @@ import { useUxContext } from "../../contexts/uxContext";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
+export async function getStaticProps(context) {
+  const id = context.params.tool;
+  const tool = await find("tool", id);
+  return {
+    props: {
+      tool,
+    },
+    revalidate: 30,
+  };
+}
+
+export async function getStaticPaths() {
+  const tools = await getAll("tool");
+
+  const paths = tools.map((item) => ({
+    params: { tool: item.id.toString() },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
 const SetupSingle = ({ tool }) => {
   const { redirect } = useUxContext();
 
@@ -39,28 +62,5 @@ const SetupSingle = ({ tool }) => {
     )
   );
 };
-
-export async function getStaticProps(context) {
-  const id = context.params.tool;
-  const tool = await find("tool", id);
-  return {
-    props: {
-      tool,
-    },
-    revalidate: 30,
-  };
-}
-
-export async function getStaticPaths() {
-  const tools = await getAll("tool");
-
-  const paths = tools.map((item) => ({
-    params: { tool: item.id.toString() },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
 
 export default SetupSingle;

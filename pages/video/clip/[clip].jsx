@@ -9,6 +9,28 @@ import Head from "next/head";
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
 
+export async function getStaticPaths() {
+  const clips = await getAll("video_project");
+  const paths = clips.map((item) => ({
+    params: { clip: item.id.toString() },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context) {
+  const id = context.params.clip;
+  const clip = await find("video_project", id);
+  return {
+    props: {
+      clip,
+    },
+    revalidate: 30,
+  };
+}
+
 const Clip = ({ clip }) => {
   dayjs.locale("fr");
   const { handleRedirect } = useUxContext();
@@ -64,27 +86,5 @@ const Clip = ({ clip }) => {
     )
   );
 };
-
-export async function getStaticPaths() {
-  const clips = await getAll("video_project");
-  const paths = clips.map((item) => ({
-    params: { clip: item.id.toString() },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
-}
-
-export async function getStaticProps(context) {
-  const id = context.params.clip;
-  const clip = await find("video_project", id);
-  return {
-    props: {
-      clip,
-    },
-    revalidate: 30,
-  };
-}
 
 export default Clip;

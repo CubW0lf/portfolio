@@ -7,6 +7,29 @@ import { useUxContext } from "../../contexts/uxContext";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
+export async function getStaticProps(context) {
+  const id = context.params.equipment;
+  const equipment = await find("video_equipment", id);
+  return {
+    props: {
+      equipment,
+    },
+    revalidate: 30,
+  };
+}
+
+export async function getStaticPaths() {
+  const equipments = await getAll("video_equipment");
+
+  const paths = equipments.map((item) => ({
+    params: { equipment: item.id.toString() },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
 const SetupSingle = ({ equipment }) => {
   const { redirect } = useUxContext();
 
@@ -39,28 +62,5 @@ const SetupSingle = ({ equipment }) => {
     )
   );
 };
-
-export async function getStaticProps(context) {
-  const id = context.params.equipment;
-  const equipment = await find("video_equipment", id);
-  return {
-    props: {
-      equipment,
-    },
-    revalidate: 30,
-  };
-}
-
-export async function getStaticPaths() {
-  const equipments = await getAll("video_equipment");
-
-  const paths = equipments.map((item) => ({
-    params: { equipment: item.id.toString() },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
 
 export default SetupSingle;

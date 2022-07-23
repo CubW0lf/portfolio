@@ -11,6 +11,29 @@ import { GrClose } from "react-icons/gr";
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
 
+export async function getStaticPaths() {
+  const shootings = await getAll("shooting");
+
+  const paths = shootings.map((item) => ({
+    params: { shooting: item.id.toString() },
+  }));
+  return {
+    paths,
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context) {
+  const id = context.params.shooting;
+  const shooting = await find("shooting", id);
+  return {
+    props: {
+      shooting,
+    },
+    revalidate: 30,
+  };
+}
+
 const Shooting = ({ shooting }) => {
   dayjs.locale("fr");
   const { handleRedirect } = useUxContext();
@@ -103,28 +126,5 @@ const Shooting = ({ shooting }) => {
     )
   );
 };
-
-export async function getStaticPaths() {
-  const shootings = await getAll("shooting");
-
-  const paths = shootings.map((item) => ({
-    params: { shooting: item.id.toString() },
-  }));
-  return {
-    paths,
-    fallback: "blocking",
-  };
-}
-
-export async function getStaticProps(context) {
-  const id = context.params.shooting;
-  const shooting = await find("shooting", id);
-  return {
-    props: {
-      shooting,
-    },
-    revalidate: 30,
-  };
-}
 
 export default Shooting;
